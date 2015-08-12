@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Clientes</h1>
+<h1>Lista de Clientes</h1>
 
 <table>
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Telefono</th>
+      <th>Teléfono</th>
       <th>Celular</th>
       <th>Barrio</th>
-      <th>Direccion</th>
-      <th>Refdir</th>
+      <th>Dirección</th>
+      <th>Referencia de la dirección</th>
       <th>Fecha</th>
       <th>Hora</th>
-      <th>Ocacion</th>
+      <th>Ocación</th>
       <th>Valor</th>
       <th colspan="3"></th>
     </tr>
@@ -22,8 +22,8 @@
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= cliente.nombre %></td>
-        <td><%= cliente.telefono %></td>
+        <td><%= link_to cliente.nombre, cliente %></td>
+        <td><%= link_to cliente.telefono, cliente %></td>
         <td><%= cliente.celular %></td>
         <td><%= cliente.barrio %></td>
         <td><%= cliente.direccion %></td>
@@ -32,9 +32,9 @@
         <td><%= cliente.hora %></td>
         <td><%= cliente.ocacion %></td>
         <td><%= cliente.valor %></td>
-        <td><%= link_to 'Show', cliente %></td>
-        <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Destroy', cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', cliente %></td>
+        <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
+        <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Borraras los datos del cliente?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Cliente', new_cliente_path %>
+<%= link_to 'Nuevo Cliente', new_cliente_path %>
