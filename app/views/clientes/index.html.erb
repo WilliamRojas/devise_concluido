@@ -34,7 +34,11 @@
         <td><%= cliente.valor %></td>
         <td><%= link_to 'Ver', cliente %></td>
         <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Borraras los datos del cliente?' } %></td>
+        <td>
+        <% if can? :destroy, cliente %>
+        <%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Borraras los datos del cliente?' } %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -43,3 +47,8 @@
 <br>
 
 <%= link_to 'Nuevo Cliente', new_cliente_path %>
+
+<%# if can? :destroy, cliente %>
+   <%#= link_to t('.destroy', :default => t("helpers.links.destroy")), cliente_path(client), :method => :delete,
+   :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sur   e?')) }, :class => 'btn btn-mini btn-danger' %>
+ <%# end %>
