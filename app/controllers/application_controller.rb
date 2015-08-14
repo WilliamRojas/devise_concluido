@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
   #si se quiere separar la validacion por controlador
   #se debe agregar before_filter :authenticate_user!, :except => [:some_action_without_auth]
   #sino, lo manejamos de forma general
-  before_action :authenticate_user!, :except => [:find]
+  
+  #before_action :authenticate_user!, :except => [:find]
  
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
