@@ -2,25 +2,25 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
+    if user.role == "manager"
+      can :manage, :all
+    elsif user.role == "usuario"
+        alias_action :create, :read, :update, :to => :cru
+        #can :cru, Sale
+        #can :cru, SaleDetail
+        can :cru, Cliente
+        #can :autocomplete_cliente_nombre, Cliente
+        #can :find, Product
+    end
+
     # Define abilities for the passed in user here. For example:
-    
-       user ||= User.new # guest user (not logged in)
-       if user.role == "manager"
-         can :manage, :all
-       elsif user.role == "seller"
-         can :read, :all
-       end
-    
-    #         user ||= User.new
-    #    
-    #   if user.role == "manager"
-    #        can :manage, :all
-    #      elsif user.role == "seller"
-    #        alias_action :create, :read, :update, :to => :cru
-    #        can :cru, Sale
-    #        can :cru, SaleDetail
-    #        can :cru, Cliente
-    #      end
+    #
+    #   user ||= User.new # guest user (not logged in)
+    #   if user.admin?
+    #     can :manage, :all
+    #   else
+    #     can :read, :all
     #   end
     #
     # The first argument to `can` is the action you are giving the user 
