@@ -6,7 +6,7 @@ class Ability
     if user.role == "manager"
       can :manage, :all
     elsif user.role == "usuario"
-        alias_action :create, :read, :update, :to => :cru
+        alias_action :create, :read, :to => :cru
         #can :cru, Sale
         #can :cru, SaleDetail
         can :cru, Cliente

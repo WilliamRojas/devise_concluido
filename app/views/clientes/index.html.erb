@@ -14,8 +14,8 @@
       <th>Fecha</th>
       <th>Hora</th>
       <th>Ocación</th>
-      <th>Valor</th>
-      <th colspan="3"></th>
+      <!--<th>Valor</th>-->
+      <th colspan="3">Usted puede</th>
     </tr>
   </thead>
 
@@ -31,9 +31,13 @@
         <td><%= cliente.fecha %></td>
         <td><%= cliente.hora %></td>
         <td><%= cliente.ocacion %></td>
-        <td><%= cliente.valor %></td>
+        <td><%#= cliente.valor %></td>
+        <% if can? :read, cliente %>
         <td><%= link_to 'Ver', cliente %></td>
+        <% end %>
+        <% if can? :edit, cliente %>
         <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
+        <% end %>
         <td>
         <% if can? :destroy, cliente %>
         <%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Borraras los datos del cliente?' } %>
