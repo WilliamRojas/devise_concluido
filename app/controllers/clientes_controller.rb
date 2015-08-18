@@ -26,12 +26,12 @@ class ClientesController < ApplicationController
 
   def create
     @cliente = Cliente.new(cliente_params)
-    flash[:notice] = 'Cliente was successfully created.' if @cliente.save
+    flash[:notice] = 'El cliente fue creado exitosamente.' if @cliente.save
     respond_with(@cliente)
   end
 
   def update
-    flash[:notice] = 'Cliente was successfully updated.' if @cliente.update(cliente_params)
+    flash[:notice] = 'Elcliente fue actualizado exitosamente.' if @cliente.update(cliente_params)
     respond_with(@cliente)
   end
 

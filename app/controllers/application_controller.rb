@@ -5,11 +5,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   # para que acepte los parametros, agregar  el before filter
   # issue https://github.com/ryanb/cancan/issues/835#issuecomment-18663815
+
   before_filter do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
+
   #agregado por requisito de Devise
   #deshabilitar para permitir el registro del primer usuario
   #si se quiere separar la validacion por controlador
@@ -27,6 +29,6 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :password, :remember_me) }
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:name, :email, :password, :password_confirmation)}
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password)}
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :role, :email, :password, :password_confirmation, :current_password)}
   end
 end

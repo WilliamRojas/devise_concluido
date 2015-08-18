@@ -1,3 +1,6 @@
 <h3>Usuario</h3>
 <p>Nombre: <%= @user.name if @user.name %></p>
 <p>Correo: <%= @user.email if @user.email %></p>
+<p>Rol: <%= @user.role if @user.role %></p>
+
+<td><%= link_to 'Editar', edit_user_registration_path %></td>
