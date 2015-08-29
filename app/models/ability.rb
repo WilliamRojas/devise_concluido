@@ -12,7 +12,7 @@ class Ability
             can :cru, Cliente
 
         elsif user.role == "usuario"
-            alias_action :create, :read, :to => :cr
+            alias_action :create, :to => :cr
             can :cr, Cliente
         end
   end

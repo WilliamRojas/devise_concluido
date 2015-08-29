@@ -31,7 +31,7 @@
         <td><%= cliente.fecha %></td>
         <td><%= cliente.hora %></td>
         <td><%= cliente.ocacion %></td>
-        <!--<td><%#= cliente.valor %></td>-->
+        <!--<td><%= cliente.valor %></td>-->
         <% if can? :read, cliente %>
         <td><%= link_to 'Ver', cliente %></td>
         <% end %>
