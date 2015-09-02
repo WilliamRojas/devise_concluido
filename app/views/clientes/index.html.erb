@@ -22,8 +22,8 @@
   <tbody>
     <% @clientes.each do |cliente| %>
       <tr>
-        <td><%= link_to cliente.nombre, cliente %></td>
-        <td><%= link_to cliente.telefono, cliente %></td>
+        <td><%= cliente.nombre %><%#= link_to cliente.nombre, cliente %></td>
+        <td><%= cliente.telefono %></td>
         <td><%= cliente.celular %></td>
         <td><%= cliente.barrio %></td>
         <td><%= cliente.direccion %></td>
@@ -31,10 +31,10 @@
         <td><%= cliente.fecha %></td>
         <td><%= cliente.hora %></td>
         <td><%= cliente.ocacion %></td>
-        <!--<td><%= cliente.valor %></td>-->
-        <% if can? :read, cliente %>
-        <td><%= link_to 'Ver', cliente %></td>
-        <% end %>
+        <!--<td><%= cliente.valor %></td>
+        <%# if can? :read, cliente %>
+        <td><%#= link_to 'Ver', cliente %></td>
+        <%# end %>-->
         <% if can? :edit, cliente %>
         <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
         <% end %>
