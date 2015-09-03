@@ -20,31 +20,7 @@
   </thead>
 
   <tbody>
-    <% @clientes.each do |cliente| %>
-      <tr>
-        <td><%= cliente.nombre %><%#= link_to cliente.nombre, cliente %></td>
-        <td><%= cliente.telefono %></td>
-        <td><%= cliente.celular %></td>
-        <td><%= cliente.barrio %></td>
-        <td><%= cliente.direccion %></td>
-        <td><%= cliente.refdir %></td>
-        <td><%= cliente.fecha %></td>
-        <td><%= cliente.hora %></td>
-        <td><%= cliente.ocacion %></td>
-        <!--<td><%= cliente.valor %></td>
-        <%# if can? :read, cliente %>
-        <td><%#= link_to 'Ver', cliente %></td>
-        <%# end %>-->
-        <% if can? :edit, cliente %>
-        <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
-        <% end %>
-        <td>
-        <% if can? :destroy, cliente %>
-        <%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Borraras los datos del cliente?' } %>
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render @clientes %>
   </tbody>
 </table>
 
